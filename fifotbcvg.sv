@@ -32,7 +32,7 @@ covergroup fifo_cg @(posedge clk);
     full_cp  : coverpoint full;
     empty_cp : coverpoint empty;
 
-    // Cross coverage (VERY GOOD 🔥)
+    // Cross coverage (VERY GOOD )
     wr_full_cross : cross wr_en_cp, full_cp;
     rd_empty_cross : cross rd_en_cp, empty_cp;
 
