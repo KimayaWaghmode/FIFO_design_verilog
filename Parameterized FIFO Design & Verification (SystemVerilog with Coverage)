@@ -1,0 +1,107 @@
+# Parameterized FIFO Design & Verification (SystemVerilog with Coverage)
+
+Overview
+
+This project implements and verifies a parameterized synchronous FIFO (First-In-First-Out) using SystemVerilog. The verification includes assertion-based checks and functional coverage to ensure correctness across normal and corner-case scenarios.
+
+ Objective
+
+* Design a configurable FIFO with parameterized depth and width
+* Verify correct data flow and flag behavior
+* Detect overflow and underflow conditions
+* Achieve functional coverage using SystemVerilog covergroups
+
+---
+Features
+
+* Parameterized FIFO (configurable depth and width)
+* Full and empty flag generation
+* Pointer and counter-based architecture
+* Assertion-based verification
+* Functional coverage using covergroups
+
+---
+Design Description
+
+The FIFO design uses:
+
+* Write pointer (`wr_ptr`) to store incoming data
+* Read pointer (`rd_ptr`) to retrieve data
+* Counter (`count`) to track the number of elements
+
+Conditions:
+
+* Full → `count == DEPTH`
+* Empty → `count == 0`
+
+---
+ Verification Methodology
+
+* Developed a SystemVerilog testbench
+* Generated stimulus using `$urandom`
+* Performed write and read operations
+* Verified FIFO behavior using waveform analysis in QuestaSim
+
+---
+
+## Assertions
+
+Assertion checks were implemented to detect invalid operations:
+
+* Overflow: Write when FIFO is full
+* Underflow: Read when FIFO is empty
+
+Errors are reported during simulation using `$error`.
+
+---
+Functional Coverage
+
+Functional coverage was implemented using SystemVerilog covergroups.
+
+Coverpoints:
+
+* Write enable (`wr_en`)
+* Read enable (`rd_en`)
+* Full flag (`full`)
+* Empty flag (`empty`)
+
+Cross Coverage:
+
+* Write when FIFO is full (overflow condition)
+* Read when FIFO is empty (underflow condition)
+
+Coverage Goal:
+
+* Ensure all operational and corner-case scenarios are exercised
+
+Result:
+
+* Achieved 100% functional coverage
+
+---
+Simulation Results
+
+* FIFO maintains correct First-In-First-Out behavior
+* Data is read in the same order as written
+* Assertions detect invalid conditions
+* Coverage confirms all scenarios are exercised
+
+---
+Tools Used
+
+* SystemVerilog
+* QuestaSim
+
+---
+Conclusion
+
+This project demonstrates FIFO design and verification using SystemVerilog, including assertion-based verification and functional coverage to ensure design correctness and completeness.
+
+---
+Key Learning
+
+* FIFO architecture and control logic
+* SystemVerilog-based verification
+* Assertion handling
+* Functional and cross coverage
+
